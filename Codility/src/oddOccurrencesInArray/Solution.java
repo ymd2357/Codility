@@ -1,6 +1,7 @@
 package oddOccurrencesInArray;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map.Entry;
 import java.util.function.IntConsumer;
 import java.util.function.Predicate;
@@ -19,15 +20,15 @@ import java.util.stream.IntStream;
 class Solution {
 	public int solution(int[] A) {
 		// write your code in Java SE 8
-		HashMap<Integer, Integer> map = new HashMap<>();
+		HashSet<Integer> set = new HashSet<>();
 
 		IntConsumer action = (i) -> {
-			Integer count = map.get(i);
-			map.put(i, count == null ? 1 : count + 1);
+			if(!set.remove(i)) {
+				set.add(i);
+			}
 		};
 		IntStream.of(A).forEach(action);
-		Predicate<? super Entry<Integer, Integer>> action2 = e -> e.getValue() % 2 == 1;
-		return map.entrySet().stream().filter(action2).findFirst().get().getKey().intValue();
+		return set.stream().findFirst().get().intValue();
 	}
 
 	public static void main(String[] args) {
