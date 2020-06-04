@@ -1,7 +1,5 @@
 package permMissingElem;
 
-import java.util.stream.IntStream;
-
 /**
  * Lesson3:Time Complexity:PermMissingElem
  *
@@ -13,7 +11,10 @@ class Solution {
 			return 1;
 		}
 
-		long sum = IntStream.of(A).asLongStream().sum();
+		int sum = 0;
+		for (int i : A) {
+			sum += i;
+		}
 		long sum2 = ((long) A.length + 1) * ((long) A.length + 2) / 2;
 
 		return (int) (sum2 - sum);
