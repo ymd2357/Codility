@@ -1,6 +1,5 @@
 package permMissingElem;
 
-import java.util.function.IntPredicate;
 import java.util.stream.IntStream;
 
 /**
@@ -14,10 +13,10 @@ class Solution {
 			return 1;
 		}
 
-		IntPredicate predicate = i -> IntStream.of(A).noneMatch(j -> i == j);
-		int ret = IntStream.range(1, A.length + 2).filter(predicate).findFirst().getAsInt();
+		long sum = IntStream.of(A).asLongStream().sum();
+		long sum2 = ((long) A.length + 1) * ((long) A.length + 2) / 2;
 
-		return ret;
+		return (int) (sum2 - sum);
 	}
 
 	public static void main(String[] args) {
