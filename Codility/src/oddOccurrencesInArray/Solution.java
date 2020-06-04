@@ -1,11 +1,6 @@
 package oddOccurrencesInArray;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map.Entry;
-import java.util.function.IntConsumer;
-import java.util.function.Predicate;
-import java.util.stream.IntStream;
 
 /**
  * Lesson2:Arrays OddOccurrencesInArray
@@ -22,13 +17,12 @@ class Solution {
 		// write your code in Java SE 8
 		HashSet<Integer> set = new HashSet<>();
 
-		IntConsumer action = (i) -> {
+		for(int i : A) {
 			if(!set.remove(i)) {
 				set.add(i);
 			}
-		};
-		IntStream.of(A).forEach(action);
-		return set.stream().findFirst().get().intValue();
+		}
+		return set.iterator().next();
 	}
 
 	public static void main(String[] args) {
