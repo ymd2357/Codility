@@ -14,15 +14,20 @@ class Solution {
 	public int[] solution(int N, int[] A) {
 		int[] result = new int[N];
 		int max = 0;
+		int base = 0;
 		for (int i : A) {
 			if (1 <= i && i <= N) {
 				result[i - 1]++;
 				max = Math.max(max, result[i - 1]);
 			}
 			if (i == N + 1) {
-				for (int j = 0; j < result.length; j++)
-					result[j] = max;
+				base += max;
+				max = 0;
+				result = new int[N];
 			}
+		}
+		for (int i = 0; i < N; i++) {
+			result[i] += base;
 		}
 		return result;
 	}
