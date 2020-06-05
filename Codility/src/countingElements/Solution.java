@@ -1,7 +1,7 @@
 package countingElements;
 
+import java.util.HashSet;
 import java.util.Set;
-import java.util.TreeSet;
 
 /**
  * Lesson 4:Counting Elements: FrogRiverOne
@@ -10,7 +10,7 @@ import java.util.TreeSet;
  */
 class Solution {
 	public int solution(int X, int[] A) {
-		Set<Integer> map = new TreeSet<>();
+		Set<Integer> map = new HashSet<>();
 		for (int i = 0; i < A.length; i++) {
 			map.add(A[i]);
 			if (map.size() == X)
