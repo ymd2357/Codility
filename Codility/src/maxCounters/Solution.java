@@ -13,11 +13,13 @@ import java.util.stream.IntStream;
 class Solution {
 	public int[] solution(int N, int[] A) {
 		int[] result = new int[N];
+		int max = 0;
 		for (int i : A) {
-			if (1 <= i && i <= N)
+			if (1 <= i && i <= N) {
 				result[i - 1]++;
+				max = Math.max(max, result[i - 1]);
+			}
 			if (i == N + 1) {
-				int max = IntStream.of(result).max().getAsInt();
 				for (int j = 0; j < result.length; j++)
 					result[j] = max;
 			}
